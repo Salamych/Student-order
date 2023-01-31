@@ -1,0 +1,78 @@
+status = error
+name = PropertiesConfig
+ 
+#Make sure to change log file path as per your need
+property.filename = E:\\Global_project\\student_order\\target\\test_log.log
+ 
+filters = threshold
+ 
+filter.threshold.type = ThresholdFilter
+filter.threshold.level = debug
+ 
+appenders = rolling
+ 
+appender.rolling.type = RollingFile
+appender.rolling.name = RollingFile
+appender.rolling.fileName = ${filename}
+appender.rolling.filePattern = E:\\Global_project\\student_order\\target\\Previous\\debug-backup-%d{MM-dd-yy-HH-mm-ss}-%i.log.gz
+appender.rolling.layout.type = PatternLayout
+appender.rolling.layout.pattern = %d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+appender.rolling.policies.type = Policies
+appender.rolling.policies.time.type = TimeBasedTriggeringPolicy
+appender.rolling.policies.time.interval = 1
+appender.rolling.policies.time.modulate = true
+appender.rolling.policies.size.type = SizeBasedTriggeringPolicy
+appender.rolling.policies.size.size=1KB
+appender.rolling.strategy.type = DefaultRolloverStrategy
+appender.rolling.strategy.max = 20
+ 
+loggers = rolling
+ 
+#Make sure to change the package structure as per your application
+ 
+logger.rolling.name = edu.javacourse.student_order.dao
+logger.rolling.level = all
+logger.rolling.additivity = true
+logger.rolling.appenderRef.rolling.ref = RollingFile
+
+***************************************************************************
+log4j2.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Properties>
+        <Property name="basePath">target</Property>
+    </Properties>
+
+    <Appenders>
+        <RollingFile name="fileLogger"
+                             fileName="${basePath}/logfile_test.log"
+                             filePattern="${basePath}/app-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <!-- Max 10 files will be created everyday -->
+            <DefaultRolloverStrategy max="2">
+                <Delete basePath="${basePathr}" maxDepth="100">
+                    <!-- Delete all files older than 30 days -->
+                    <IfLastModified age="30d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="edu.javacourse.student_order.dao" level="all" additivity="false">
+            <AppenderRef ref="fileLogger"/>
+        </Logger>
+        <Root level="trace">
+            <AppenderRef ref="fileLogger"/>
+                   </Root>
+          </Loggers>
+</Configuration>
+
+
