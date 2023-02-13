@@ -1,6 +1,7 @@
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\register\AnswerCityRegisterItem.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\exception\DaoException.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\Adult.java
+E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\util\LocalDateAdapter.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\dao\StudentOrderDaoImpl.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\Address.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\exception\CityRegisterException.java
@@ -18,8 +19,8 @@ E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domai
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\mail\MailSender.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\Child.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\StudentOrder.java
+E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\register\CityRegisterRequest.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\Street.java
-E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\validator\register\FakeCityRegisterChecker.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\StudentOrderStatus.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\children\AnswerChildren.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\PassportOffice.java
@@ -27,7 +28,6 @@ E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domai
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\validator\CityRegisterValidator.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\validator\StudentValidator.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\register\AnswerCityRegister.java
-E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\exception\TransportException.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\validator\register\RealCityRegisterChecker.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\domain\CountryArea.java
 E:\Global_project\student_order\src\main\java\edu\javacourse\student_order\StudentOrderValidator.java

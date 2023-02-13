@@ -1,0 +1,5 @@
+edu\javacourse\student_order\dao\DBInit.class
+edu\javacourse\student_order\dao\StudentOrderDaoImplTest.class
+edu\javacourse\student_order\dao\DictionaryDaoImplTest.class
+edu\javacourse\student_order\dao\SimpleRunner.class
+edu\javacourse\student_order\validator\register\FakeCityRegisterChecker.class

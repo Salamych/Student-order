@@ -6,7 +6,7 @@ import edu.javacourse.student_order.domain.Child;
 import edu.javacourse.student_order.domain.Person;
 import edu.javacourse.student_order.domain.register.CityRegisterResponse;
 import edu.javacourse.student_order.exception.CityRegisterException;
-import edu.javacourse.student_order.exception.TransportException;
+import edu.javacourse.student_order.validator.register.CityRegisterChecker;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker{
      private static final String GOOD_1 = "1000";
@@ -20,7 +20,7 @@ public class FakeCityRegisterChecker implements CityRegisterChecker{
 
      @Override
     public CityRegisterResponse checkPerson(Person person)
-            throws CityRegisterException, TransportException {
+            throws CityRegisterException {
 
         CityRegisterResponse res = new CityRegisterResponse();
 
@@ -28,26 +28,22 @@ public class FakeCityRegisterChecker implements CityRegisterChecker{
             Adult t = (Adult) person;
             String ps = t.getPassportSeria();
             if (ps.equals(GOOD_1) || ps.equals(GOOD_2)) {
-                res.setExisting(true);
+                res.setRegistered(true);
                 res.setTemporal(false);
             }
             if (ps.equals(BAD_1) || ps.equals(BAD_2)) {
-                res.setExisting(false);
+                res.setRegistered(false);
             }
             if (ps.equals(ERROR_1) || ps.equals(ERROR_2)) {
                 CityRegisterException ex = 
                         new CityRegisterException("1","GRN ERROR " + ps);
                 throw ex;
             }
-            if (ps.equals(ERROR_T_1) || ps.equals(ERROR_T_2)) {
-                TransportException ex = 
-                        new TransportException("Transport ERROR " + ps);
-                throw ex;
-            }
+            
         }
 
         if(person instanceof Child) {
-            res.setExisting(true);
+            res.setRegistered(true);
             res.setTemporal(true);
         }
 

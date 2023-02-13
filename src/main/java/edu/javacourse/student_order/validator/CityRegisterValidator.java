@@ -8,9 +8,8 @@ import edu.javacourse.student_order.domain.register.AnswerCityRegister;
 import edu.javacourse.student_order.domain.register.AnswerCityRegisterItem;
 import edu.javacourse.student_order.domain.register.CityRegisterResponse;
 import edu.javacourse.student_order.exception.CityRegisterException;
-import edu.javacourse.student_order.exception.TransportException;
 import edu.javacourse.student_order.validator.register.CityRegisterChecker;
-import edu.javacourse.student_order.validator.register.FakeCityRegisterChecker;
+import edu.javacourse.student_order.validator.register.RealCityRegisterChecker;
 
 public class CityRegisterValidator {
 
@@ -19,7 +18,7 @@ public class CityRegisterValidator {
     private CityRegisterChecker personChecker;
 
     public CityRegisterValidator() {
-        personChecker = new FakeCityRegisterChecker();
+        personChecker = new RealCityRegisterChecker();
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder so) {
@@ -40,7 +39,7 @@ public class CityRegisterValidator {
         AnswerCityRegisterItem.CityError error = null;
     try {            
          CityRegisterResponse tmp = personChecker.checkPerson(person);
-         status = tmp.isExisting()? AnswerCityRegisterItem.CityStatus.YES:
+         status = tmp.isRegistered()? AnswerCityRegisterItem.CityStatus.YES:
                  AnswerCityRegisterItem.CityStatus.NO;
          
         }
@@ -48,10 +47,6 @@ public class CityRegisterValidator {
             ex.printStackTrace(System.out);
             status = AnswerCityRegisterItem.CityStatus.ERROR;
             error = new AnswerCityRegisterItem.CityError(ex.getCode(), ex.getMessage());
-        } catch (TransportException ex) {
-            ex.printStackTrace(System.out);
-            status = AnswerCityRegisterItem.CityStatus.ERROR;
-            error = new AnswerCityRegisterItem.CityError(IN_CODE, ex.getMessage());
         } catch (Exception ex){
         ex.printStackTrace(System.out);
             status = AnswerCityRegisterItem.CityStatus.ERROR;
